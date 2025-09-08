@@ -121,9 +121,9 @@
       <div class="nav-menu" id="navMenu">
         <ul>
           <li><a href="#home" data-key="navHome" class="active">홈</a></li>
-          <li><a href="#register" data-key="navRegister">등록</a></li>
-          <li><a href="#login" data-key="navLogin">로그인</a></li>
-          <li><a href="#chart" data-key="navChart">차트</a></li>
+          <li><a href="#" data-key="navRegister">등록</a></li>
+          <li><a href="#" data-key="navLogin">로그인</a></li>
+          <li><a href="#" data-key="navChart">차트</a></li>
         </ul>
       </div>
 
@@ -167,7 +167,7 @@
         <div class="card reveal" style="transition-delay:.05s">
           <h3 data-key="cardPricingTitle">가격 산정</h3>
           <p data-key="cardPricingText">가격 = 확률 × 페이아웃. 예: +25% 확률 40% → 약 $0.40에 거래; 결과 달성 시 $1.00 정산.</p>
-          </div>
+        </div>
         <div class="card reveal" style="transition-delay:.1s">
           <h3 data-key="cardLeverageTitle">레버리지</h3>
           <p data-key="cardLeverageText">인증된 사용자에 한해 2×~5× 제공; 증거금 20%~50%; 자동청산 및 포지션 제한 적용.</p>
@@ -316,7 +316,7 @@
         navHome: '홈', navRegister: '등록', navLogin: '로그인', navChart: '차트',
         kicker: '예측 시장', heroTitle: '식자재의 미래를 거래하세요', heroLead: '푸드퓨처스는 객관적 가격 결과에 연동된 계약을 거래하는 연속형 예측 시장입니다. 전문 트레이딩 도구 + 리테일 접근성.',
         ctaStart: '시작하기', ctaHow: '작동 방식 보기', liveTickers: '샘플 티커', tickerNote: '데모용 예시 시세입니다.',
-        mechanicsTitle: '계약 메커니즘', mechanicsLead: '계약은 재료–지역–청산일 형식입니다(예: BEEF‑TX‑MAR2026). 정산은 공신력 있는 데이터에 따라 자동으로 이루어집니다.',
+        mechanicsTitle: '계약 메커니즘', mechanicsLead: '계약은 <strong>재료–지역–청산일</strong> 형식입니다(예: <em>BEEF‑TX‑MAR2026</em>). 정산은 공신력 있는 데이터에 따라 자동으로 이루어집니다.',
         cardSpecsTitle: '계약 사양', cardSpecsText: '생성 시 기준가격 설정; 정산 범위 −50% ~ +200%; 계약가치는 예측된 % 변화에 따라 $0.01~$2.00; 최소 10 계약, 최대 10,000 계약.',
         cardPricingTitle: '가격 산정', cardPricingText: '가격 = 확률 × 페이아웃. 예: +25% 확률 40% → 약 $0.40에 거래; 결과 달성 시 $1.00 정산.',
         cardLeverageTitle: '레버리지', cardLeverageText: '인증된 사용자에 한해 2×~5× 제공; 증거금 20%~50%; 자동청산 및 포지션 제한 적용.',
@@ -369,9 +369,9 @@
         howCard3Title: '3) Place Orders', howCard3Text: 'Use market/limit/stop for entries and risk management.',
         riskTitle: 'Risk & Compliance', riskLead: 'Continuous surveillance, position limits, and user protection. We comply with applicable rules.',
         riskCard1Title: 'User Protection', riskCard1Text: 'Negative balance protection, cooling-off, self-exclusion.',
-        riskCard2Title: 'Limits & Monitoring', riskCard2Text: '$10k per contract, $50k portfolio cap, auto-liquidation.',
+        riskCard2Title: '제한 & 모니터링', riskCard2Text: '계약별 $10k, 포트폴리오 $50k 제한, 자동 청산.',
         riskCard3Title: 'Data Integrity', riskCard3Text: 'Cross-validation, outlier detection, 48-hour dispute window.',
-        dataTitle: 'Data & Settlement', dataLead: 'Settlement = (Final Price − Baseline) / Baseline. Payouts execute automatically.',
+        dataTitle: '데이터 & 정산', dataLead: '정산 = (최종가격 − 기준가격) / 기준가격. 정산은 데이터 공개 24시간 이내에 자동 실행됩니다.',
         dataCard1Title: 'Primary Sources', dataCard1Text: 'USDA NASS, CME, and regional wholesale markets.',
         dataCard2Title: 'Transparency', dataCard2Text: 'Public accuracy reporting and downloadable history.',
         dataCard3Title: 'APIs', dataCard3Text: 'Professional accounts get streaming prices and order APIs.',
