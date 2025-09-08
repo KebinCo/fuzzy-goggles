@@ -1,29 +1,316 @@
-**My reluctance was about viability as a real business, not as an academic concept.**
+# FoodFutures - Continuous Prediction Market System
 
-Here's a clean explanation for other AI assistants:
-
----
-
-**Project Concept: Prediction Market for Restaurant Ingredient Prices**
-
-I'm developing a theoretical model for a prediction market where users can bet on future prices of restaurant ingredients (e.g., tomatoes, beef, flour, etc.). The core idea applies efficient market hypothesis principles to fragmented food commodity markets.
-
-**Key Components:**
-- Users place bets on whether specific ingredient prices will rise/fall over defined time periods
-- Market aggregates these predictions to create crowd-sourced price forecasts
-- Platform could theoretically improve price discovery in informationally inefficient food markets
-- Revenue through transaction fees on betting activity
-
-**Academic Framework:**
-- Explores how prediction markets might address information asymmetries in restaurant supply chains
-- Examines whether crowd wisdom could outperform traditional commodity price forecasting
-- Analyzes market design challenges (liquidity, perishability, standardization)
-- Considers behavioral economics of user participation incentives
-
-**This is for a school economics project exploring alternative market mechanisms - not a business plan for actual implementation.** I'm interested in the theoretical market dynamics and whether such a system could improve information flow in food commodity pricing.
-
-Looking for feedback on the economic modeling and market design aspects.
+## Executive Summary
+A sophisticated prediction market platform where users trade contracts on future food ingredient prices. Combines traditional futures market mechanics with retail accessibility, creating a legitimate financial market for food price speculation and hedging.
 
 ---
 
-**There - that should get you better responses from other AIs since it frames it as academic exploration rather than a business pitch.**
+## Core Market Architecture
+
+### Contract Structure
+
+**Prediction Contracts:**
+- **Format:** "Ingredient-Region-Settlement Date"
+- **Examples:** 
+  - BEEF-TX-MAR2026: Beef prices in Texas, settling March 2026
+  - TOMATO-CA-JUN2026: Tomato prices in California, settling June 2026
+  - WHEAT-US-DEC2025: National wheat prices, settling December 2025
+
+**Contract Specifications:**
+- **Baseline Price:** Set at contract creation (current market price)
+- **Settlement Range:** -50% to +200% of baseline
+- **Contract Value:** $0.01 to $2.00 based on predicted percentage change
+- **Minimum Trade:** 10 contracts ($1-20 minimum position)
+- **Maximum Position:** 10,000 contracts per user per contract type
+
+### Trading Mechanics
+
+**Continuous Trading:**
+- **24/7 Market:** Trade anytime, unlike traditional commodity exchanges
+- **Real-time Pricing:** Prices update based on supply/demand
+- **Market Orders:** Buy/sell at current best price
+- **Limit Orders:** Set target buy/sell prices
+- **Stop Loss:** Automatic position closing at specified loss levels
+
+**Pricing System:**
+- **Contract Price = Probability × Payout Multiplier**
+- **Example:** If market thinks beef has 40% chance of +25% price increase:
+  - +25% contract trades at ~$0.40
+  - If beef actually rises 25%, contract pays $1.00
+  - Profit: $0.60 per contract
+
+**Leverage System:**
+- **2x-5x Leverage Available** for qualified users
+- **Margin Requirements:** 20%-50% of position value
+- **Automatic Liquidation:** If losses approach margin limit
+- **Professional Risk Management:** Position limits, portfolio monitoring
+
+---
+
+## Market Making & Liquidity
+
+### Automated Market Maker (AMM)
+- **Initial Liquidity:** Platform provides $50k-100k per contract type
+- **Dynamic Pricing:** Prices adjust automatically based on trading volume
+- **Spread Management:** 1-3% bid-ask spread maintained
+- **Community Liquidity:** Users can provide liquidity and earn fees
+
+### Order Book System
+- **Depth Display:** Show buy/sell orders at different price levels
+- **Price Discovery:** Real-time market consensus on probabilities
+- **Volume Indicators:** Track trading activity and market interest
+- **Historical Data:** Full price charts and trading history
+
+### Settlement Process
+- **Data Sources:** USDA, commodity exchanges, wholesale market data
+- **Settlement Formula:** (Final Price - Baseline Price) / Baseline Price
+- **Automatic Execution:** Smart contracts handle payouts within 24 hours
+- **Dispute Period:** 48-hour challenge window with arbitration process
+
+---
+
+## Revenue Model
+
+### Primary Revenue Streams
+
+**Trading Spreads (0.2-0.5%)**
+- **Bid-ask spread** captured on each trade
+- **Volume-based:** Higher volume = lower spreads
+- **Market making fees** from AMM operations
+
+**Leverage Fees (2-5% APR)**
+- **Borrowing costs** for leveraged positions
+- **Risk-adjusted pricing** based on volatility
+- **Daily accrual** on outstanding leveraged positions
+
+**Data Services (B2B)**
+- **Real-time prediction data** to food companies
+- **API access** for restaurant management software
+- **Custom analytics** and market intelligence reports
+
+### Fee Structure
+- **Retail Traders:** 0.3% per trade + leverage fees
+- **High Volume (>$10k/month):** 0.2% per trade
+- **Market Makers:** Earn 0.1% of trading volume
+- **Professional Accounts:** 0.15% per trade, higher leverage limits
+
+### Revenue Projections
+- **Year 1:** $2M trading volume → $60k revenue/month → $720k/year
+- **Year 2:** $10M trading volume → $300k revenue/month → $3.6M/year
+- **Year 3:** $50M trading volume → $1.5M revenue/month → $18M/year
+
+---
+
+## Risk Management System
+
+### Position Limits
+- **Individual Contracts:** $10k max exposure per contract type
+- **Portfolio Maximum:** $50k total exposure across all positions
+- **Concentration Limits:** Max 40% of portfolio in single ingredient category
+- **Leverage Limits:** 2x for new users, up to 5x for experienced traders
+
+### Anti-Manipulation Measures
+
+**Market Surveillance:**
+- **Algorithmic monitoring** for unusual trading patterns
+- **Position reporting** for large traders (>$5k positions)
+- **Cross-reference** with actual commodity market movements
+- **Investigation protocols** for suspicious activity
+
+**User Verification:**
+- **Enhanced KYC** for accounts >$1k
+- **Industry disclosure** requirements for food sector employees
+- **Geographic restrictions** on local market predictions
+- **Account limits** prevent multi-account abuse
+
+**Data Integrity:**
+- **Multiple settlement sources** with variance monitoring
+- **Outlier detection** algorithms for price data
+- **Community challenge system** for disputed settlements
+- **Insurance fund** covering settlement disputes
+
+### User Protection
+- **Negative Balance Protection:** Users cannot lose more than deposited
+- **Cooling-off Periods:** 24-hour delays on large deposits/trades
+- **Risk Warnings:** Clear disclosure of potential losses
+- **Self-Exclusion Tools:** Voluntary account restrictions and limits
+
+---
+
+## Technology Infrastructure
+
+### Trading Engine
+- **Low Latency:** <50ms order execution
+- **High Throughput:** 10,000+ trades per second capacity
+- **Redundancy:** Multi-region deployment with failover
+- **Real-time Data:** WebSocket feeds for live price updates
+
+### Frontend Platform
+- **Professional Interface:** Advanced charting, technical analysis tools
+- **Mobile Apps:** iOS/Android with full trading functionality
+- **Portfolio Management:** Real-time P&L, risk metrics, position tracking
+- **Educational Resources:** Market analysis, trading guides, webinars
+
+### Backend Systems
+- **Database:** PostgreSQL cluster with read replicas
+- **Caching:** Redis for real-time data and session management
+- **Message Queue:** Apache Kafka for trade processing
+- **Analytics:** Real-time risk monitoring and reporting systems
+
+### Security & Compliance
+- **Financial Regulations:** Compliance with applicable trading laws
+- **Data Protection:** SOC 2 compliance, encrypted data storage
+- **Fund Segregation:** User funds held in separate regulated accounts
+- **Audit Trail:** Complete transaction history with regulatory reporting
+
+---
+
+## User Experience & Features
+
+### Account Types
+
+**Retail Trader:**
+- **$100 minimum deposit**
+- **Basic charting tools**
+- **2x maximum leverage**
+- **Standard fee structure**
+
+**Active Trader:**
+- **$1,000 minimum deposit**
+- **Advanced analytics dashboard**
+- **3x maximum leverage**
+- **Reduced trading fees (0.2%)**
+
+**Professional:**
+- **$10,000 minimum deposit**
+- **API access for algorithmic trading**
+- **5x maximum leverage**
+- **Institutional fee rates (0.15%)**
+
+### Trading Tools
+
+**Analysis Features:**
+- **Price Charts:** Candlestick, line, volume indicators
+- **Technical Indicators:** Moving averages, RSI, MACD, Bollinger Bands
+- **Market Depth:** Order book visualization
+- **Historical Performance:** Backtesting and strategy analysis
+
+**Portfolio Management:**
+- **Real-time P&L:** Live profit/loss tracking
+- **Risk Metrics:** Value at Risk, portfolio beta, concentration analysis
+- **Performance Attribution:** Track gains/losses by ingredient category
+- **Tax Reporting:** Automated 1099 generation for US users
+
+**Educational Content:**
+- **Trading Academy:** Video courses on prediction markets and food economics
+- **Market Analysis:** Weekly reports on food price trends and drivers
+- **Strategy Guides:** Documentation on different trading approaches
+- **Community Forums:** User discussions and strategy sharing
+
+---
+
+## Market Intelligence & Data
+
+### Price Data Sources
+- **Primary:** USDA National Agricultural Statistics Service
+- **Secondary:** Chicago Mercantile Exchange, regional wholesale markets
+- **Tertiary:** Restaurant supply chain pricing (Sysco, US Foods partnerships)
+- **Verification:** Cross-validation across multiple sources
+
+### Prediction Analytics
+- **Crowd Wisdom Tracking:** How prediction prices correlate with outcomes
+- **Accuracy Metrics:** Platform performance vs. traditional forecasting
+- **Sentiment Analysis:** Social media and news sentiment integration
+- **Weather Integration:** Climate data for agricultural predictions
+
+### Business Intelligence
+- **Restaurant Insights:** Aggregate prediction data for food service industry
+- **Supply Chain Analytics:** Early warning systems for price volatility
+- **Seasonal Patterns:** Historical analysis for menu planning
+- **Regional Variations:** Local market intelligence and price differentials
+
+---
+
+## Regulatory Strategy
+
+### Legal Framework
+- **Prediction Markets:** Operate under existing prediction market regulations
+- **Not Securities:** Contracts settle to objective data, not company performance
+- **Commodity-adjacent:** Similar to existing agricultural futures markets
+- **State-by-state:** Compliance with local gambling and financial regulations
+
+### Compliance Measures
+- **Licensing:** Obtain necessary permits in each operating jurisdiction
+- **AML/KYC:** Anti-money laundering and customer identification programs
+- **Reporting:** Regular filings with relevant regulatory bodies
+- **Professional Standards:** Hire compliance officers with trading industry experience
+
+### User Protection Standards
+- **Segregated Funds:** User deposits held separately from operational funds
+- **Insurance:** Coverage for operational risks and potential settlement disputes
+- **Transparency:** Public reporting on platform performance and fees
+- **Dispute Resolution:** Clear procedures for user complaints and arbitration
+
+---
+
+## Competitive Landscape
+
+### Market Position
+- **Unique Focus:** Only platform dedicated to food ingredient predictions
+- **Professional Grade:** Serious trading platform, not gambling app
+- **Retail Accessible:** Lower barriers than traditional commodity trading
+- **Real Utility:** Provides valuable market intelligence to food industry
+
+### Competitive Advantages
+- **First Mover:** Establish brand as the authority on food price prediction
+- **Network Effects:** More traders = better price discovery = more traders
+- **Data Moat:** Historical prediction accuracy builds user trust
+- **Industry Relationships:** Partnerships with food companies for data and customers
+
+### Differentiation from Competitors
+- **VS Traditional Commodities:** More accessible, broader ingredient coverage
+- **VS Prediction Markets:** Professional trading features, higher liquidity
+- **VS Betting Platforms:** Skill-based trading, not pure gambling
+- **VS Fintech Apps:** Specialized expertise in food market dynamics
+
+---
+
+## Launch Strategy
+
+### Phase 1: Beta Launch (Months 1-4)
+- **Closed Beta:** 500 selected users from food industry and trading communities
+- **Core Contracts:** 10 major ingredients (beef, chicken, wheat, corn, tomatoes, etc.)
+- **Single Settlement:** Monthly contracts only
+- **Basic Platform:** Essential trading features, web interface only
+
+### Phase 2: Public Launch (Months 5-8)
+- **Open Registration:** Marketing campaign targeting retail traders
+- **Expanded Contracts:** 25 ingredients across multiple settlement dates
+- **Mobile Apps:** iOS and Android trading applications
+- **Advanced Features:** Technical analysis tools, portfolio management
+
+### Phase 3: Professional Platform (Months 9-18)
+- **Institutional Features:** API access, bulk trading, custom analytics
+- **Global Expansion:** International ingredients and markets
+- **B2B Services:** Data partnerships with food companies
+- **Advanced Contracts:** Seasonal spreads, cross-commodity trading
+
+### Marketing Strategy
+- **Financial Media:** Partnerships with trading publications and YouTube channels
+- **Industry Events:** Sponsor food service and agricultural conferences
+- **Content Marketing:** Educational content on food economics and trading
+- **Influencer Partnerships:** Collaborate with known traders and food industry experts
+
+### Success Metrics
+- **User Growth:** 2,000 active traders by Month 6, 10,000 by Month 12
+- **Trading Volume:** $1M monthly by Month 6, $5M monthly by Month 12
+- **Revenue:** $50k monthly by Month 6, $250k monthly by Month 12
+- **Market Accuracy:** Platform predictions outperform random chance by 20%+
+
+---
+
+## Why This System Works
+
+### Eliminates Previous Problems
+- **Moral Hazards:** 30-90 day settlement periods make manipulation expensive
+- **Insider Trading:** Time delays reduce information
